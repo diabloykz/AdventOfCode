@@ -1,9 +1,5 @@
 source("src/functions.R")
-name <- "laurent"
-year <- 2022
-day <- 1
-
-input <- aoc_get_inputfile(day, year, name)
+input <- aoc_get_inputfile(1, 2022, "serge")
 
 inputs <- unlist(str_split(input, "\n\n"))
 listInputs <- lapply(inputs, FUN=function(x) as.integer(unlist(str_split(x,"\n"))))
@@ -14,10 +10,3 @@ sorted_sumlist <- sort(sumlist,decreasing=TRUE)
 sorted_sumlist[1]
 #reponse 2
 sum(sorted_sumlist[1:3])
-
-# en data.table
-dt <- data.table(col=listInputs)
-dt[, sumElements:=sapply(col, sum, na.rm=T)]
-dt <- dt[order(sumElements, decreasing = T)]
-dt[1, sumElements]
-dt[1:3, sum(sumElements)]
